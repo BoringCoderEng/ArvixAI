@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AnimatePresence, easeInOut, motion } from "motion/react"
 import Editor from '@monaco-editor/react';
+
+
+
 function Artifact() {
   const [collapsed, setCollapsed] = useState(false)
   const { artifacts } = useSelector(state => state.message)
