@@ -32,7 +32,7 @@ jobs:
             - name: Build Gateway
               run: |
                  docker build \
-                 -f backend/gateway/Dockerfile  \
+                 -f backend/gateway/Dockerfile \
                  -t gateway backend
 
             - name: tag Gateway
@@ -46,26 +46,21 @@ jobs:
             
             - name: Build Auth
               run: |
-                 docker build \
-                 -f backend/services/auth/Dockerfile  \
-                 -t auth-service backend
+                 docker build -f backend/services/auth/Dockerfile -t auth-service backend
 
             - name: tag Auth
               run: |
-                 docker tag auth-service:latest \
-                 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/auth-service:latest
+                 docker tag auth-service:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/auth-service:latest
 
             - name: push Auth
               run: |
                  docker push \
-                 $AWS_aCCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/auth-service:latest
+                 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/auth-service:latest
              
                  
             - name: Build Chat
               run: |
-                 docker build \
-                 -f backend/services/chat/Dockerfile  \
-                 -t chat-service backend
+                 docker build -f backend/services/chat/Dockerfile -t chat-service backend
 
             - name: tag Chat
               run: |
@@ -74,14 +69,12 @@ jobs:
             - name: push Chat
               run: |
                  docker push \
-                 $AWS_aCCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/chat-service:latest
+                 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/chat-service:latest
                  
 
             - name: Build Agent
               run: |
-                 docker build \
-                 -f backend/services/agent/Dockerfile  \
-                 -t agent-service backend
+                 docker build -f backend/services/agent/Dockerfile -t agent-service backend
 
             - name: tag Agent
               run: |
@@ -91,14 +84,12 @@ jobs:
             - name: push Agent
               run: |
                  docker push \
-                 $AWS_aCCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/agent-service:latest
+                 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/agent-service:latest
 
             
             - name: Build Billing
               run: |
-                 docker build \
-                 -f backend/services/billing/Dockerfile  \
-                 -t billing-service backend
+                 docker build -f backend/services/billing/Dockerfile -t billing-service backend
 
             - name: tag Billing
               run: |
@@ -107,7 +98,7 @@ jobs:
             - name: push Billing
               run: |
                  docker push \
-                 $AWS_aCCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/billing-service:latest
+                 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/billing-service:latest
                  
 
             - name: deploy Gateway
