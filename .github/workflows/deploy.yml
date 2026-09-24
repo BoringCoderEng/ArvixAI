@@ -149,6 +149,10 @@ jobs:
 
 
             - name: Build frontend
+              env: 
+                VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+                VITE_RAZORPAY_KEY_ID: ${{ secrets.VITE_RAZORPAY_KEY_ID }}
+
               run: |
                 cd frontend
                 npm install
