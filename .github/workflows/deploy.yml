@@ -43,10 +43,22 @@ jobs:
               run: |
                  docker push \
                  $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/gateway:latest
+
+
+            - name: Create Firebase service account file
+              env:
+                FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+              run: |
+                printf '%s' "$FIREBASE_SERVICE_ACCOUNT_JSON" > backend/services/auth/serviceAccountKey.json
+
             
             - name: Build Auth
               run: |
                  docker build -f backend/services/auth/Dockerfile -t auth-service backend
+            
+            - name: Remove Firebase service account file
+              run: |
+                rm -f backend/services/auth/serviceAccountKey.json
 
             - name: tag Auth
               run: |
