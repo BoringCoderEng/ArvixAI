@@ -30,7 +30,7 @@ app.use("/api/billing",protect, proxyWithHeader(process.env.BILLING_SERVICE))
 
 
 app.get("/",(req,res)=>{
-    res.json({message:"hello from gateway"})
+    res.json({message:"hello from gateway FROM SIMMI"})
 })
 
 app.listen(port,()=>{
