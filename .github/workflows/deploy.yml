@@ -152,6 +152,7 @@ jobs:
               env: 
                 VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
                 VITE_RAZORPAY_KEY_ID: ${{ secrets.VITE_RAZORPAY_KEY_ID }}
+                VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
 
               run: |
                 cd frontend
